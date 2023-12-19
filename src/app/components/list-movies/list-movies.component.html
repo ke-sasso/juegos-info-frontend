@@ -6,19 +6,19 @@
       <div class="col" *ngFor="let pelicula of peliculas">
         <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" 
         [style]="'background-image: url(' + pelicula.thumbnail + ');   background-repeat: no-repeat;  background-position: center;  opacity: 0.9;'">
-          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1" (click)="viewmovie(pelicula)">
             <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold"><br><br></h2>
-            <ul class="d-flex list-unstyled mt-auto">
+            <ul class="d-flex list-unstyled mt-auto rounded-5 shadow-lg"  style="background-color: rgba(0, 0, 0, 0.5);  padding: 20px; ">
               <li class="me-auto">
                 <img src="{{pelicula.thumbnail}}" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
               </li>
-              <li class="d-flex align-items-center me-3">
-                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
-                <small>{{pelicula.platform}}</small>
+              <li class="d-flex align-items-center me-4">
+                <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+                <small>{{pelicula.short_description}}</small>
+
               </li>
               <li class="d-flex align-items-center">
-                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
-                <small>{{pelicula.release_date}}</small>
+                <small>{{pelicula.title}}</small>
               </li>
             </ul>
           </div>
@@ -26,4 +26,6 @@
       </div>
 
     </div>
+
+
   </div>

@@ -1,0 +1,42 @@
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div class="col-10 col-sm-8 col-lg-6">
+        <img src="{{pelicula.thumbnail}}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+      </div>
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-bold lh-1 mb-3">{{pelicula.title}}</h1>
+        <p class="lead">{{pelicula.description}}</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <a type="button" class="btn btn-primary btn-lg px-4 me-md-2" href="{{pelicula.game_url}}">+More</a>
+          <a type="button"    [routerLink]="['/movies']" class="btn btn-outline-secondary btn-lg px-4 [route]">Back</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="bg-dark text-secondary px-4 py-5 text-center">
+    <div class="py-5">
+      <h1 class="display-5 fw-bold text-white">System Requirements</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="fs-5 mb-4">OS: {{pelicula.minimum_system_requirements?.os}}, Processor: {{pelicula.minimum_system_requirements?.processor}}<br> Memory: {{pelicula.minimum_system_requirements?.memory}},
+            Graphics: {{pelicula.minimum_system_requirements?.graphics}}, Storage: {{pelicula.minimum_system_requirements?.storage}}</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <a type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold" href="{{pelicula.freetogame_profile_url}}">MORE INFO</a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+    <div class="col" *ngFor="let pelicula of pelicula.screenshots">
+      <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" 
+      [style]="'background-image: url(' + pelicula.image + ');   background-repeat: no-repeat;  background-position: center;  opacity: 0.9;'">
+        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+          <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold"><br><br><br></h2>
+        </div>
+      </div>
+    </div>
+
+  </div>
