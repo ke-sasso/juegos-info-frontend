@@ -5,20 +5,28 @@
         <div class="row">
                 <div class="col-md-3">
                     <label for="country" class="form-label">Nombre</label>
-                    <input type="text" id="titulo"   class="form-control" placeholder="Escribir nombre..."  [ngModel]="titulo" formControlName="titulo">
+                    <input type="text" id="titulo"   class="form-control" placeholder="Escribir nombre..."   formControlName="titulo">
                 </div>
                 <div class="col-md-3">
                     <label for="country" class="form-label">Genero</label>
-                    <select class="form-select" id="country" required="" class="form-control" >
-                    <option value="">Choose...</option>
-                    <option></option>
+                    <select class="form-select" id="country" required="" class="form-control"  formControlName="genero"  id="genero"   >
+                    <option value="">Seleccionar...</option>
+                    <option value="MMOARPG">MMOARPG</option>
+                    <option value="ARPG">ARPG</option>
+                    <option value="Shooter">Shooter</option>
+                    <option value="Strategy">Strategy</option>
+                    <option value="Fighting">Fighting</option>
+                    <option value="Action RPG">Action RPG</option>
+                    <option value="Battle Royale">Battle Royale</option>
+                    <option value="MOBA">MOBA</option>
                     </select>
                 </div>
                 <div class="col-md-3">
                     <label for="country" class="form-label">Plataforma</label>
-                    <select class="form-select" id="country" required="" class="form-control" >
-                    <option value="">Choose...</option>
-                    <option></option>
+                    <select class="form-select" id="country" required="" class="form-control"  formControlName="plataforma"  id="plataforma" >
+                        <option value="">Seleccionar...</option>
+                        <option value="PC (Windows)">PC (Windows)</option>
+                        <option value="Web Browser">Web Browser</option>
                     </select>
                 </div>
             <div class="col-md-3">
@@ -27,6 +35,18 @@
             </div>
         </div>
     </form>
+
+    <div class="bg-dark text-secondary px-4 py-5 text-center" *ngIf="juegos.length==0">
+        <div class="py-5">
+          <h1 class="display-5 fw-bold text-white">No se encontraron resultados...</h1>
+          <div class="col-lg-6 mx-auto">
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+              <a type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold" (click)="filtrarJuegos()" >VUELVE A INTENTAR</a>
+    
+            </div>
+          </div>
+        </div>
+      </div>
 
     <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
       <div class="col" *ngFor="let item of juegos">

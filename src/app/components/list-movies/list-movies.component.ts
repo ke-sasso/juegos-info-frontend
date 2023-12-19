@@ -18,13 +18,14 @@ export class ListMoviesComponent {
   titulo: string='';
   formulario:any;
   filtro: any[] = [];
-
+  datageneral: any[] = [];
 
   constructor(private moviesService: MoviesService, private router: Router) { }
 
   ngOnInit(): void {
     this.moviesService.getAllDatos().subscribe((data: any) => {
       this.juegos = data;
+      this.datageneral=data;
     });
     this.formulario = new FormGroup({
       titulo: new FormControl(''),
@@ -39,18 +40,19 @@ export class ListMoviesComponent {
   }
 
   filtrarJuegos(){
-
     var plataforma = this.formulario.value.plataforma;
     var genero = this.formulario.value.genero;
     var titulo = this.formulario.value.titulo;
 
-    
-    this.juegos  = this.juegos.filter(juego =>
-      juego.title.toLowerCase().includes(titulo.toLowerCase()) &&
-      juego.genre.toLowerCase().includes(genero.toLowerCase()) &&
-      juego.platform.toLowerCase().includes(plataforma.toLowerCase())
-    );
-
+    if(plataforma=='' && genero=='' && titulo==''){
+      this.juegos = this.datageneral;
+    }else{
+      this.juegos  = this.juegos.filter(juego =>
+        juego.title.toLowerCase().includes(titulo.toLowerCase()) &&
+        juego.genre.toLowerCase().includes(genero.toLowerCase()) &&
+        juego.platform.toLowerCase().includes(plataforma.toLowerCase())
+      );
+    }
 
   }
 
