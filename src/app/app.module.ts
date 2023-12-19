@@ -8,6 +8,7 @@ import { ListMoviesComponent } from './components/list-movies/list-movies.compon
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { DetailMovieComponent } from './components/detail-movie/detail-movie.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { DetailMovieComponent } from './components/detail-movie/detail-movie.com
     HttpClientModule,
     AppRoutingModule,
     NgbModule,
-    NgbPaginationModule, NgbAlertModule
+    NgbPaginationModule, NgbAlertModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

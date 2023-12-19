@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { Router,ActivatedRoute } from '@angular/router';
 import { MoviesService } from '../../services/movies.service';
-import { Movie } from '../../services/domain/movie';
+import { Juego } from '../../services/domain/juego';
 
 @Component({
   selector: 'app-detail-movie',
@@ -11,18 +11,16 @@ import { Movie } from '../../services/domain/movie';
 })
 export class DetailMovieComponent {
 
-  pelicula: Movie = {};
+  juego: Juego = {};
 
   constructor(private moviesService: MoviesService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.moviesService.getPelicula(id).subscribe((data: any) => {
-      this.pelicula = data;
-      console.log(this.pelicula);
+    this.moviesService.getData(id).subscribe((data: any) => {
+      this.juego = data;
     });
   }
-
 
 
 }

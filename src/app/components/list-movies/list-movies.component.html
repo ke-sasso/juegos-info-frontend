@@ -1,24 +1,50 @@
 
   <div class="container px-4 py-5" id="custom-cards" >
-    <h1>Listado de Películas</h1>
+    <h1>Listado de Juegos</h1>
+    <form [formGroup]="formulario">
+        <div class="row">
+                <div class="col-md-3">
+                    <label for="country" class="form-label">Nombre</label>
+                    <input type="text" id="titulo"   class="form-control" placeholder="Escribir nombre..."  [ngModel]="titulo" formControlName="titulo">
+                </div>
+                <div class="col-md-3">
+                    <label for="country" class="form-label">Genero</label>
+                    <select class="form-select" id="country" required="" class="form-control" >
+                    <option value="">Choose...</option>
+                    <option></option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="country" class="form-label">Plataforma</label>
+                    <select class="form-select" id="country" required="" class="form-control" >
+                    <option value="">Choose...</option>
+                    <option></option>
+                    </select>
+                </div>
+            <div class="col-md-3">
+                <br>
+                <button class="w-100 btn btn-primary btn-lg" type="submit" (click)="filtrarJuegos()">BUSCAR</button>
+            </div>
+        </div>
+    </form>
 
     <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-      <div class="col" *ngFor="let pelicula of peliculas">
+      <div class="col" *ngFor="let item of juegos">
         <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" 
-        [style]="'background-image: url(' + pelicula.thumbnail + ');   background-repeat: no-repeat;  background-position: center;  opacity: 0.9;'">
-          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1" (click)="viewmovie(pelicula)">
-            <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold"><br><br></h2>
-            <ul class="d-flex list-unstyled mt-auto rounded-5 shadow-lg"  style="background-color: rgba(0, 0, 0, 0.5);  padding: 20px; ">
+        [style]="'background-image: url(' + item.thumbnail + ');   background-repeat: no-repeat;  background-position: center;  opacity: 0.9;'">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1" (click)="viewdata(item)">
+           <br>
+            <ul class="d-flex list-unstyled mt-auto rounded-5 shadow-lg"  style="background-color: rgba(0, 0, 0, 0.6);  padding: 20px; ">
               <li class="me-auto">
-                <img src="{{pelicula.thumbnail}}" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+                <img src="{{item.thumbnail}}" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
               </li>
               <li class="d-flex align-items-center me-4">
                 <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
-                <small>{{pelicula.short_description}}</small>
+                <small>{{item.short_description}}</small>
 
               </li>
               <li class="d-flex align-items-center">
-                <small>{{pelicula.title}}</small>
+                <small><b>{{item.title}}</b></small>
               </li>
             </ul>
           </div>

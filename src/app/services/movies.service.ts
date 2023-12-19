@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Movie } from './domain/movie';
+import { Juego } from './domain/juego';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +12,11 @@ export class MoviesService {
 
   constructor(private http: HttpClient) { }
 
-  getPeliculas(): Observable<Movie> {
+  getAllDatos(): Observable<Juego> {
     return this.http.get(`${this.apiUrl}/games`)
   }
 
-  getPelicula(id:any): Observable<Movie> {
+  getData(id:any): Observable<Juego> {
     return this.http.get(`${this.apiUrl}/game?id=${id}`);
   }
 
